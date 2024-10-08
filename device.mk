@@ -25,9 +25,6 @@
 # Inherit from sony sm8550-common
 $(call inherit-product, device/sony/sm8550-common/common.mk)
 
-# Use Xperia extra parts
-$(call inherit-product, device/sony/extra/extra.mk)
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
@@ -52,6 +49,28 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Xperia Modules | Xperia Extras
+$(call inherit-product, hardware/sony/XperiaModules.mk)
+$(call inherit-product, vendor/sony/extra/Yodo/extra.mk)
+
+# Xperia Modules - Flags
+TARGET_SUPPORTS_EUICC := true
+TARGET_SHIPS_XPERIA_SETTINGS_MENU := true
+TARGET_SUPPORTS_IMAGE_ENHANCEMENT := true
+TARGET_SUPPORTS_BATTERY_CARE := true
+TARGET_SUPPORTS_HIGH_REFRESH_RATE := true
+TARGET_SUPPORTS_HIGH_POLLING_RATE_LXS_TS := true
+
+# Xperia Extras - Flags
+TARGET_SHIPS_SONY_FRAMEWORK := true
+TARGET_SHIPS_SONY_CAMERA := true
+TARGET_SHIPS_SONY_APPS := true
+TARGET_SUPPORTS_XPERIA_STREAM := true
+
+# Xperia Modules | Xperia Extras - Shared Flags (hardware_sony & vendor_sony_extra)
+TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
+TARGET_SHIPS_SOUND_ENHANCEMENT := true
 
 # Inherit from vendor blobs
 $(call inherit-product, vendor/sony/pdx234/pdx234-vendor.mk)

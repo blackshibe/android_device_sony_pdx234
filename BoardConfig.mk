@@ -17,9 +17,6 @@
 # Inherit from sony sm8550-common
 -include device/sony/sm8550-common/BoardConfigCommon.mk
 
-# Inherit Xperia extra parts	
--include device/sony/extra/BoardConfigExtra.mk
-
 DEVICE_PATH := device/sony/pdx234
 
 # Display
