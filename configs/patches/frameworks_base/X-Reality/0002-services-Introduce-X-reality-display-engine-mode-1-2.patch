@@ -1,0 +1,210 @@
+From 16e77703f891645d173ecdf445370ce1ba9c03a7 Mon Sep 17 00:00:00 2001
+From: minaripenguin <minaripenguin@users.noreply.github.com>
+Date: Tue, 21 May 2024 09:43:57 +0800
+Subject: [PATCH 2/2] services: Introduce X-reality display engine mode [1/2]
+
+* inspired from sony's x-reality engine
+
+test: set x-reality engine preset, confirmed visual changes
+
+Signed-off-by: minaripenguin <minaripenguin@users.noreply.github.com>
+---
+ .../color/ColorBalanceTintController.java     | 114 ++++++++++++++++--
+ .../display/color/ColorDisplayService.java    |   8 ++
+ 2 files changed, 115 insertions(+), 7 deletions(-)
+
+diff --git a/services/core/java/com/android/server/display/color/ColorBalanceTintController.java b/services/core/java/com/android/server/display/color/ColorBalanceTintController.java
+index 0c2db0cb..37b443f4 100644
+--- a/services/core/java/com/android/server/display/color/ColorBalanceTintController.java
++++ b/services/core/java/com/android/server/display/color/ColorBalanceTintController.java
+@@ -29,7 +29,22 @@ import java.util.Arrays;
+ /** Control the color transform for global color balance. */
+ final class ColorBalanceTintController extends TintController {
+ 
++    public static final String X_REALITY_ENGINE_ENABLED = "x_reality_engine_mode_enabled";
++
+     private final float[] mMatrix = new float[16];
++    private float mHue = 0.0f;
++    private float mContrast = 1.0f;
++    private float mValue = 1.0f;
++    private float mSaturation = 1.0f;
++
++    // X-Reality Engine mode presets
++    private final int X_REALITY_RED = 237;
++    private final int X_REALITY_GREEN = 238;
++    private final int X_REALITY_BLUE = 240;
++    private final int X_REALITY_HUE = 0;
++    private final int X_REALITY_SAT = 275;
++    private final int X_REALITY_CONT = 258;
++    private final int X_REALITY_VAL = 233;
+ 
+     @Override
+     public void setUp(Context context, boolean needsLinear) {
+@@ -46,6 +61,10 @@ final class ColorBalanceTintController extends TintController {
+         mMatrix[0] = ((float) Color.red(rgb)) / 255.0f;
+         mMatrix[5] = ((float) Color.green(rgb)) / 255.0f;
+         mMatrix[10] = ((float) Color.blue(rgb)) / 255.0f;
++        applyHue(mMatrix, mHue);
++        applyContrast(mMatrix, mContrast);
++        applyValue(mMatrix, mValue);
++        applySaturation(mMatrix, mSaturation);
+     }
+ 
+     @Override
+@@ -59,13 +78,32 @@ final class ColorBalanceTintController extends TintController {
+     }
+ 
+     public void updateBalance(Context context, int userId) {
+-        int red = Settings.Secure.getIntForUser(context.getContentResolver(), channelToKey(0),
+-                255, userId);
+-        int green = Settings.Secure.getIntForUser(context.getContentResolver(), channelToKey(1),
+-                255, userId);
+-        int blue = Settings.Secure.getIntForUser(context.getContentResolver(), channelToKey(2),
+-                255, userId);
+-
++        boolean xRealityEnabled = Settings.Secure.getIntForUser(context.getContentResolver(), X_REALITY_ENGINE_ENABLED, 0, userId) != 0;
++        int red = Settings.Secure.getIntForUser(context.getContentResolver(), channelToKey(0), 255, userId);
++        int green = Settings.Secure.getIntForUser(context.getContentResolver(), channelToKey(1), 255, userId);
++        int blue = Settings.Secure.getIntForUser(context.getContentResolver(), channelToKey(2), 255, userId);
++        if (xRealityEnabled) {
++            red = X_REALITY_RED;
++            green = X_REALITY_GREEN;
++            blue = X_REALITY_BLUE;
++            mHue = X_REALITY_HUE;
++            mContrast = X_REALITY_CONT / 255.0f;
++            mValue = X_REALITY_VAL / 255.0f;
++            mSaturation = X_REALITY_SAT / 255.0f;
++        } else {
++            /* 
++            * for upstream purposes, users prefer live display atm and were unsure if exposing these properties 
++            * for production is a good idea so skip exposing these until were ready
++            mHue = Settings.Secure.getIntForUser(context.getContentResolver(), "display_color_balance_hue", 0, userId) / 255.0f * 360.0f;
++            mContrast = Settings.Secure.getIntForUser(context.getContentResolver(), "display_color_balance_contrast", 255, userId) / 255.0f;
++            mValue = Settings.Secure.getIntForUser(context.getContentResolver(), "display_color_balance_value", 255, userId) / 255.0f;
++            mSaturation = Settings.Secure.getIntForUser(context.getContentResolver(), "display_color_balance_saturation", 255, userId) / 255.0f;
++            */
++            mHue = 0;
++            mContrast = 1.0f;
++            mValue = 1.0f;
++            mSaturation = 1.0f;
++        }
+         int rgb = Color.rgb(red, green, blue);
+         setMatrix(rgb);
+     }
+@@ -82,4 +120,66 @@ final class ColorBalanceTintController extends TintController {
+                 throw new IllegalArgumentException("Unknown channel: " + channel);
+         }
+     }
++
++    private void applyHue(float[] matrix, float hue) {
++        float angle = hue * (float)Math.PI / 180;
++        float cosA = (float)Math.cos(angle);
++        float sinA = (float)Math.sin(angle);
++
++        float[] hueMatrix = {
++            0.213f + cosA * 0.787f - sinA * 0.213f, 0.715f - cosA * 0.715f - sinA * 0.715f, 0.072f - cosA * 0.072f + sinA * 0.928f, 0,
++            0.213f - cosA * 0.213f + sinA * 0.143f, 0.715f + cosA * 0.285f + sinA * 0.140f, 0.072f - cosA * 0.072f - sinA * 0.283f, 0,
++            0.213f - cosA * 0.213f - sinA * 0.787f, 0.715f - cosA * 0.715f + sinA * 0.715f, 0.072f + cosA * 0.928f + sinA * 0.072f, 0,
++            0, 0, 0, 1
++        };
++
++        Matrix.multiplyMM(matrix, 0, hueMatrix, 0, matrix, 0);
++    }
++
++    private void applyContrast(float[] matrix, float contrast) {
++        float scale = contrast;
++        float translate = (1 - scale) / 2;
++
++        float[] contrastMatrix = {
++            scale, 0, 0, 0,
++            0, scale, 0, 0,
++            0, 0, scale, 0,
++            translate, translate, translate, 1
++        };
++
++        Matrix.multiplyMM(matrix, 0, contrastMatrix, 0, matrix, 0);
++    }
++
++    private void applyValue(float[] matrix, float value) {
++        float scale = value;
++
++        float[] valueMatrix = {
++            scale, 0, 0, 0,
++            0, scale, 0, 0,
++            0, 0, scale, 0,
++            0, 0, 0, 1
++        };
++
++        Matrix.multiplyMM(matrix, 0, valueMatrix, 0, matrix, 0);
++    }
++
++    private void applySaturation(float[] matrix, float saturation) {
++        float rw = 0.3086f;
++        float gw = 0.6094f;
++        float bw = 0.0820f;
++
++        float invSat = 1.0f - saturation;
++        float R = invSat * rw;
++        float G = invSat * gw;
++        float B = invSat * bw;
++
++        float[] saturationMatrix = {
++            R + saturation, G, B, 0,
++            R, G + saturation, B, 0,
++            R, G, B + saturation, 0,
++            0, 0, 0, 1
++        };
++
++        Matrix.multiplyMM(matrix, 0, saturationMatrix, 0, matrix, 0);
++    }
+ }
+diff --git a/services/core/java/com/android/server/display/color/ColorDisplayService.java b/services/core/java/com/android/server/display/color/ColorDisplayService.java
+index a08a10d9..7bedce4b 100644
+--- a/services/core/java/com/android/server/display/color/ColorDisplayService.java
++++ b/services/core/java/com/android/server/display/color/ColorDisplayService.java
+@@ -117,6 +117,7 @@ public final class ColorDisplayService extends SystemService {
+     private static final int MSG_APPLY_DISPLAY_WHITE_BALANCE = 5;
+     private static final int MSG_APPLY_REDUCE_BRIGHT_COLORS = 6;
+     private static final int MSG_APPLY_DISPLAY_COLOR_BALANCE = 7;
++    private static final int MSG_APPLY_UPDATE_DISPLAY_ENGINE = 8;
+ 
+     /**
+      * Return value if a setting has not been set.
+@@ -364,6 +365,9 @@ public final class ColorDisplayService extends SystemService {
+                             case Secure.DISPLAY_COLOR_BALANCE_GREEN:
+                                 mHandler.sendEmptyMessage(MSG_APPLY_DISPLAY_COLOR_BALANCE);
+                                 break;
++                            case ColorBalanceTintController.X_REALITY_ENGINE_ENABLED:
++                                mHandler.sendEmptyMessage(MSG_APPLY_UPDATE_DISPLAY_ENGINE);
++                                break;
+                             case Secure.DISPLAY_WHITE_BALANCE_ENABLED:
+                                 updateDisplayWhiteBalanceStatus();
+                                 break;
+@@ -406,6 +410,8 @@ public final class ColorDisplayService extends SystemService {
+                 false /* notifyForDescendants */, mContentObserver, mCurrentUser);
+         cr.registerContentObserver(Secure.getUriFor(Secure.DISPLAY_COLOR_BALANCE_BLUE),
+                 false /* notifyForDescendants */, mContentObserver, mCurrentUser);
++        cr.registerContentObserver(Secure.getUriFor(ColorBalanceTintController.X_REALITY_ENGINE_ENABLED),
++                false /* notifyForDescendants */, mContentObserver, mCurrentUser);
+         cr.registerContentObserver(Secure.getUriFor(Secure.DISPLAY_WHITE_BALANCE_ENABLED),
+                 false /* notifyForDescendants */, mContentObserver, mCurrentUser);
+         cr.registerContentObserver(Secure.getUriFor(Secure.REDUCE_BRIGHT_COLORS_ACTIVATED),
+@@ -462,6 +468,7 @@ public final class ColorDisplayService extends SystemService {
+ 
+         if (mColorBalanceTintController.isAvailable(getContext())) {
+             mHandler.sendEmptyMessage(MSG_APPLY_DISPLAY_COLOR_BALANCE);
++            mHandler.sendEmptyMessage(MSG_APPLY_UPDATE_DISPLAY_ENGINE);
+         }
+     }
+ 
+@@ -1731,6 +1738,7 @@ public final class ColorDisplayService extends SystemService {
+                     applyTintByCct(mDisplayWhiteBalanceTintController, false);
+                     break;
+                 case MSG_APPLY_DISPLAY_COLOR_BALANCE:
++                case MSG_APPLY_UPDATE_DISPLAY_ENGINE:
+                     mColorBalanceTintController.updateBalance(getContext(), mCurrentUser);
+                     applyTint(mColorBalanceTintController, true);
+                     break;
+-- 
+2.43.0
+

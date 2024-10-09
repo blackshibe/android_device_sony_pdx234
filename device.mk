@@ -51,17 +51,9 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Xperia Modules | Xperia Extras
-$(call inherit-product, hardware/sony/XperiaModules.mk)
 $(call inherit-product, vendor/sony/extra/Yodo/extra.mk)
 
-# Xperia Modules - Flags
-TARGET_SUPPORTS_EUICC := true
-TARGET_SHIPS_XPERIA_SETTINGS_MENU := true
-TARGET_SUPPORTS_IMAGE_ENHANCEMENT := true
-TARGET_SUPPORTS_BATTERY_CARE := true
-TARGET_SUPPORTS_HIGH_REFRESH_RATE := true
-TARGET_SUPPORTS_HIGH_POLLING_RATE_LXS_TS := true
-
+        
 # Xperia Extras - Flags
 TARGET_SHIPS_SONY_FRAMEWORK := true
 TARGET_SHIPS_SONY_CAMERA := true
