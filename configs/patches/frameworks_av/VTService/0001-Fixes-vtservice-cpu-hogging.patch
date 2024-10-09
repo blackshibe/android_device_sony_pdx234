@@ -1,0 +1,34 @@
+From 608fabde63039385cf65c5256807da8322fcc265 Mon Sep 17 00:00:00 2001
+From: bengris32 <bengris32@protonmail.ch>
+Date: Sat, 7 Oct 2023 17:37:35 +0100
+Subject: [PATCH] Fixes vtservice cpu hogging
+
+Change-Id: Ief25e83c5b4d40e56da8487eef52574a969af9ca
+---
+ media/module/foundation/AHandler.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/media/module/foundation/AHandler.cpp b/media/module/foundation/AHandler.cpp
+index d8b0aaf..41df165 100644
+--- a/media/module/foundation/AHandler.cpp
++++ b/media/module/foundation/AHandler.cpp
+@@ -41,14 +41,14 @@ void AHandler::deliverMessage(const sp<AMessage> &msg) {
+ }
+ 
+ void AHandler::setDeliveryStatus(bool delivering, uint32_t what, int64_t startUs) {
+-    AutoMutex autoLock(mLock);
++//    AutoMutex autoLock(mLock);
+     mDeliveringMessage = delivering;
+     mCurrentMessageWhat = what;
+     mCurrentMessageStartTimeUs = startUs;
+ }
+ 
+ void AHandler::getDeliveryStatus(bool& delivering, uint32_t& what, int64_t& durationUs) {
+-    AutoMutex autoLock(mLock);
++//    AutoMutex autoLock(mLock);
+     delivering = mDeliveringMessage;
+     what = mCurrentMessageWhat;
+     durationUs = mCurrentMessageStartTimeUs == 0 ?
+-- 
+2.45.1
+
