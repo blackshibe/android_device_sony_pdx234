@@ -66,6 +66,7 @@ PRODUCT_PACKAGES += \
     XperiaAudio \
     XperiaAudioDTS \
     XperiaAudioPlus \
+    XperiaAudioAddon \
     XperiaTSRA \
     XperiaSettingsMenu                    
 
