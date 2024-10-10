@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 XperiaLabs Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name" translatable="true">एक्सपीरिया सेटिंग्स</string>
+    <string name="app_summary" translatable="false">डिवाइस विशिष्ट सेटिंग्स कॉन्फ़िगर करें</string>
+
+    <!-- Display Settings -->
+    <string name="display_title">डिस्प्ले</string>
+    <string name="display_settings_title">इमेज क्वालिटी सेटिंग्स</string>
+    <string name="display_settings_summary">एक अविस्मरणीय दृश्य अनुभव बनाने के लिए शानदार रंग या निर्माता के इच्छित दृष्टि के एक विश्वसनीय प्रजनन के बीच चुनें</string>
+
+    <!-- Audio Settings -->
+    <string name="sound_title">ध्वनि</string>
+    <string name="audio_settings_title">ऑडियो सेटिंग्स</string>
+    <string name="audio_settings_summary">एक उल्लेखनीय और इमर्सिव ऑडियो प्लेबैक अनुभव के लिए डॉल्बी साउंड ईक्यू और 360 रियलिटी ऑडियो अपमिक्स के साथ अपनी ध्वनि गुणवत्ता को बढ़ाएं</string>
+
+    <!-- Charging Settings -->
+    <string name="charging_title">चार्जिंग</string>
+    <string name="charger_settings_title">बैटरी केयर</string>
+    <string name="charger_settings_summary">अधिकतम चार्जिंग प्रतिशत को समायोजित करके और अन्य चार्जिंग सेटिंग्स को ठीक करके बैटरी की लंबी उम्र को अनुकूलित करें</string>
+
+    <!-- USB Section | External Monitor -->
+    <string name="usb_title">यूएसबी</string>
+    <string name="usb_em_title">बाहरी मॉनिटर</string>
+    <string name="usb_em_summary">बाहरी कैमरा सेटिंग्स को अनुकूलित करने के लिए बाहरी मॉनिटर ऐप सक्षम करें और जीवंत, वास्तविक रंगों को कैप्चर करने के लिए एक विश्वसनीय और सटीक व्यूफाइंडर के रूप में अपने एक्सपीरिया के डिस्प्ले का उपयोग करें</string>
+
+    <!-- USB Audio Output -->
+    <string name="usba_settings_title">बाहरी ऑडियो आउटपुट</string>
+    <string name="usba_settings_summary">यूएसबी पोर्ट के माध्यम से किसी बाहरी डिवाइस पर ध्वनि आउटपुट करते समय मीडिया, इन-कॉल या माइक्रोफ़ोन की ऑडियो वॉल्यूम समायोजित करें</string>
+
+    <!-- DSM (DualShock/Sense Manager) -->
+    <string name="gaming_title">गेमिंग</string>
+    <string name="dsm_settings_title">PS5 और PS4 के लिए वायरलेस कंट्रोलर</string>
+    <string name="dsm_settings_summary">गेमिंग के लिए उनका उपयोग करने के लिए अपने प्लेस्टेशन© नियंत्रकों को अपने एक्सपीरिया डिवाइस से कनेक्ट करें</string>
+
+    <!-- Xperia Stream -->
+    <string name="accui_settings_title">एक्सपीरिया स्ट्रीम</string>
+    <string name="accui_settings_summary">एक्सपीरिया स्ट्रीम आपको उन्नत डिस्प्ले आउटपुट और स्ट्रीमिंग क्षमताओं और एक प्रशंसक प्रदान करता है जो फोन को गर्मी को खत्म करने, प्रदर्शन में सुधार करने में मदद करेगा</string>
+</resources>

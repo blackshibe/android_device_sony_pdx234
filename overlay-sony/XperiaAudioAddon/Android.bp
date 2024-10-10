@@ -1,0 +1,17 @@
+//
+// Copyright (C) 2024 XperiaLabs Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app_import {
+	name: "XperiaAudioAddon",
+	owner: "sony",
+	apk: "XperiaAudioAddon.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	privileged: true,
+	system_ext_specific: true,
+}
