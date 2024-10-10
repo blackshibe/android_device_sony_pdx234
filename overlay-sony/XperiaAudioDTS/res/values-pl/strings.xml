@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2024 XperiaLabs Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <!-- App Name -->
+    <string name="app_name" translatable="true">Dźwięk Xperia</string>
+
+    <!-- Audio Settings -->
+    <string name="audio_menu_title">Ustawienia Dźwięku</string>
+    <string name="audio_menu_header">Jakość Dźwięku</string>
+    <string name="dtsx_title">DTS:X Ultra</string>
+    <string name="dtsx_summary">DTS:X Ultra poprawia jakość dźwięku dzięki trójwymiarowym efektom przestrzennym i regulowanemu przez użytkownika korektorowi, umożliwiając bardziej wciągające środowisko rozrywki</string>
+    <string name="threesixtyupmix_title">360 Upmix</string>
+    <string name="threesixtyupmix_summary">Dzięki technologii Sony 360 Audio Rzeczywistości Upmix (360 Upmix) możesz cieszyć się przestrzennym i wciągającym dźwiękiem ze zwykłych źródeł stereo</string>
+    <string name="effectpriority_title">Priorytet Efektu</string>
+    <string name="effectpriority_summary">Aplikacja 360 Upmix będzie zawsze miała pierwszeństwo przed innymi włączonymi efektami (albo dowolnymi innymi ustawieniami na tym ekranie z funkcją 360 Upmix, albo samą funkcją 360 Upmix) w zakresie dźwięku multimedialnego aplikacji.</string>
+    <string name="audio_menu_footer">Podczas odtwarzania treści audio z ulepszeniami dźwięku informacje o zawartości będą miały pierwszeństwo przed ustawieniami na tym ekranie. Treści w wysokiej rozdzielczości można również odtwarzać prawidłowo, gdy wyłączone są ulepszenia dźwięku.\n\n\n\nInformacje o dźwięku przestrzennym\nAby włączyć funkcję 360 Reality Audio, włącz Dźwięk Przestrzenny.\nWszystkie ustawienia na tym ekranie obsługują Dźwięk Przestrzenny.</string>
+</resources>

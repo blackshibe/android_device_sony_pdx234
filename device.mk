@@ -50,7 +50,6 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-<<<<<<< HEAD
 # Xperia Extras
 $(call inherit-product, vendor/sony/extra/Yodo/extra.mk)
 
@@ -69,21 +68,5 @@ PRODUCT_PACKAGES += \
     XperiaTSRA \
     XperiaSettingsMenu # modified to launch Sony stock audio settings
 
-=======
-# Xperia Modules | Xperia Extras
-$(call inherit-product, vendor/sony/extra/Yodo/extra.mk)
-
-        
-# Xperia Extras - Flags
-TARGET_SHIPS_SONY_FRAMEWORK := true
-TARGET_SHIPS_SONY_CAMERA := true
-TARGET_SHIPS_SONY_APPS := true
-TARGET_SUPPORTS_XPERIA_STREAM := true
-
-# Xperia Modules | Xperia Extras - Shared Flags (hardware_sony & vendor_sony_extra)
-TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
-TARGET_SHIPS_SOUND_ENHANCEMENT := true
-
->>>>>>> 4a73a27 (pdx234: kang xperialabs sony extra blobs, drop sony-sm8550 ones)
 # Inherit from vendor blobs
 $(call inherit-product, vendor/sony/pdx234/pdx234-vendor.mk)
