@@ -36,8 +36,8 @@
             android:summary="@string/audio_settings_summary">
             <intent
                 android:action="android.intent.action.MAIN"
-                android:targetPackage="com.xperia.settings.audio"
-                android:targetClass="com.xperia.settings.audio.AudioSettingsActivity" />
+                android:targetPackage="com.sonyericsson.soundenhancement"
+                android:targetClass="com.sonyericsson.soundenhancement.AudioEffectMenuForDolbyAudioActivity" />
         </Preference>
 
     </PreferenceCategory>
