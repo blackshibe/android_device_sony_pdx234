@@ -18,8 +18,8 @@ class XperiaSettingsPackage(private val fragment: PreferenceFragmentCompat) {
     private val pm = fragment.activity?.packageManager
     private val displayPackageName = "com.xperia.settings.display"
     private val displayClassName = "com.xperia.settings.display.DisplaySettingsActivity"
-    private val audioPackageName = "com.xperia.settings.audio"
-    private val audioClassName = "com.xperia.settings.audio.AudioSettingsActivity"
+    private val audioPackageName = "com.sonyericsson.soundenhancement"
+    private val audioClassName = "com.sonyericsson.soundenhancement.AudioEffectMenuForDolbyAudioActivity"
     private val batteryPackageName = "org.lineageos.lineageparts"
     private val batteryClassName = "org.lineageos.lineageparts.health.ChargingControlSettings"
     private val extmonPackageName = "com.sonymobile.extmonitorapp"
