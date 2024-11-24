@@ -4,6 +4,10 @@
 vendor/etc/acdbdata/kalama_qrd/Sony_acdb_cal.acdb
 vendor/etc/acdbdata/kalama_qrd/Sony_workspaceFileXml.qwsp
 
+# ACDBs
+vendor/etc/acdbdata/kalama_qrd/Sony_acdb_cal.acdb
+vendor/etc/acdbdata/kalama_qrd/Sony_workspaceFileXml.qwsp
+
 # Audio FX Modules
 vendor/etc/zoom_noise_reduction/znr_Front_44k.tbl
 vendor/etc/zoom_noise_reduction/znr_Front_48k.tbl
@@ -30,7 +34,6 @@ vendor/etc/zoom_noise_reduction/znr_default_48k.tbl
 vendor/etc/zoom_noise_reduction/znr_parameter.xml
 vendor/etc/zoom_noise_reduction/znr_parameter_back.xml
 
-# Camera
 # Camera
 vendor/bin/hw/vendor.somc.hardware.camera.provider@1.0-service
 vendor/camera/CAMINO_FW_DATA_AF_0x0104.dat
@@ -440,7 +443,6 @@ vendor/lib64/libarcsoft_low_light_hdr.so
 vendor/lib64/libarcsoft_qnnhtp.so
 vendor/lib64/libbitmlengine.so
 vendor/lib64/libbitmlenginev2.so
-vendor/lib64/libc++_shared.so
 vendor/lib64/libcamerapostproc.so
 vendor/lib64/libcammw.so
 vendor/lib64/libcammw_util.so
@@ -560,9 +562,7 @@ vendor/lib64/libvideoml.so
 vendor/lib64/local_libcamera_metadata.so
 vendor/lib64/vendor.qti.hardware.camera.aon-service-impl.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
-vendor/lib64/vendor.semc.hardware.extlight-V1-ndk_platform.so
 vendor/lib64/vendor.somc.camera.device-impl.so
-vendor/lib64/vendor.somc.hardware.videoeffect-V1-impl.so
 
 # Camera firmware
 vendor/firmware/CAMERA_ICP.b00
@@ -591,11 +591,53 @@ vendor/firmware/CAMERA_ICP.mbn
 vendor/firmware/CAMERA_ICP.mdt
 vendor/firmware/CAMERA_ICP_170.elf
 
+# Display (SDM)
+vendor/etc/displayconfig/display_id_131.xml
+
 # Display (HDR)
 vendor/etc/libhdr_somc.xml
 
 # Display calibration data
 vendor/etc/display/qdcm_calib_data_1.json
+
+# EVA firmware
+vendor/firmware/evass.b00
+vendor/firmware/evass.b01
+vendor/firmware/evass.b02
+vendor/firmware/evass.b03
+vendor/firmware/evass.b04
+vendor/firmware/evass.b05
+vendor/firmware/evass.b06
+vendor/firmware/evass.b07
+vendor/firmware/evass.b08
+vendor/firmware/evass.b09
+vendor/firmware/evass.b10
+vendor/firmware/evass.b11
+vendor/firmware/evass.b12
+vendor/firmware/evass.b13
+vendor/firmware/evass.b14
+vendor/firmware/evass.b15
+vendor/firmware/evass.b16
+vendor/firmware/evass.b17
+vendor/firmware/evass.b18
+vendor/firmware/evass.b19
+vendor/firmware/evass.mbn
+vendor/firmware/evass.mdt
+
+# Graphics (Adreno firmware)
+vendor/firmware/a740_sqe.fw
+vendor/firmware/a740_zap.b00
+vendor/firmware/a740_zap.b01
+vendor/firmware/a740_zap.b02
+vendor/firmware/a740_zap.elf
+vendor/firmware/a740_zap.mbn
+vendor/firmware/a740_zap.mdt
+vendor/firmware/gmu_gen70200.bin
+
+# NFC configs
+vendor/etc/libnfc-nci.conf
+vendor/etc/libnfc-nxp.conf
+vendor/etc/libnfc-nxp_RF.conf
 
 # Other maybe needed firmware
 vendor/firmware/L-cs35l45-dsp1-spk-cali.bin
@@ -617,6 +659,14 @@ vendor/firmware/cs40l25a_cal.wmfw
 
 # Touchscreen firmware
 vendor/firmware/touch_module_id_0x01.img
+
+# VPU firmware
+vendor/firmware/vpu20_4v.mbn
+vendor/firmware/vpu20_4v_unsigned.mbn
+vendor/firmware/vpu30_4v.mbn
+vendor/firmware/vpu30_4v_unsigned.mbn
+vendor/firmware/vpu33_4v.mbn
+vendor/firmware/vpu33_4v_unsigned.mbn
 
 # Wifi firmware
 vendor/etc/wifi/bdwlan.e17;SYMLINK=vendor/firmware/kiwi/bdwlan.e17
