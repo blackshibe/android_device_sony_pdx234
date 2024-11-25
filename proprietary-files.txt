@@ -222,8 +222,8 @@ vendor/camera/version.dat
 vendor/etc/camera/camxoverridesettings.txt
 vendor/etc/init/vendor.somc.hardware.camera.provider@1.0-service.rc
 vendor/etc/vintf/manifest/vendor.somc.hardware.camera.provider.manifest.xml
-vendor/lib64/Camera_QNN/libQnnHtp.so
-vendor/lib64/Camera_QNN/libQnnHtpV73Stub.so
+vendor/lib64/Camera_QNN/libQnnHtp.so;MODULE_SUFFIX=.cameraqnn
+vendor/lib64/Camera_QNN/libQnnHtpV73Stub.so;MODULE_SUFFIX=.cameraqnn
 vendor/lib64/camera/com.qti.eeprom.gt24p128c2csli_imx766.so
 vendor/lib64/camera/com.qti.eeprom.gt24p64b_imx688.so
 vendor/lib64/camera/com.qti.eeprom.irs2381c_polar.so
@@ -477,7 +477,7 @@ vendor/lib64/libmmcamera_lscv35.so
 vendor/lib64/libmmcamera_mfnr.so
 vendor/lib64/libmmcamera_mfnr_t4.so
 vendor/lib64/libmmcamera_pdpc.so
-vendor/lib64/libmorpho_single_camera.so
+vendor/lib64/libmorpho_single_camera.so;DISABLE_CHECKELF
 vendor/lib64/libmpbase.so
 vendor/lib64/libnanopb.so
 vendor/lib64/libopencv.so
