@@ -430,7 +430,6 @@ vendor/lib64/com.qualcomm.qti.mcx.usecase.extension.so
 vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.offline.so
 vendor/lib64/hw/com.qti.chi.override.so
-vendor/lib64/libSNPE.so
 vendor/lib64/libSnpeHtpPrepare.so
 vendor/lib64/libaidenoiser.so
 vendor/lib64/libaidenoiserv2.so
