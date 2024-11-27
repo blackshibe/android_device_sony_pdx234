@@ -1,4 +1,8 @@
-# Stock package version: XQ-DQ72_Customized HK_67.1.A.2.278
+# Stock package version: XQ-DQ72_Customized_SEA_67.1.A.2.307
+
+# ACDBs
+vendor/etc/acdbdata/kalama_qrd/Sony_acdb_cal.acdb
+vendor/etc/acdbdata/kalama_qrd/Sony_workspaceFileXml.qwsp
 
 # Audio FX Modules
 vendor/etc/zoom_noise_reduction/znr_Front_44k.tbl
