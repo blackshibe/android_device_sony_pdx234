@@ -1,10 +1,6 @@
 # Bluetooth
 bluetooth.device.default_name=Xperia 1 V
 
-# Fingerprint
-persist.vendor.fingerprint.type=side
-persist.vendor.fingerprint.sensor_location=1096|1105|240|local:131
-
 # Smooth display
 ro.surface_flinger.set_idle_timer_ms=4000
 ro.surface_flinger.set_touch_timer_ms=4000
