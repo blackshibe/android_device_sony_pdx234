@@ -44,7 +44,8 @@ PRODUCT_COPY_FILES += \
 # Overlays
 PRODUCT_PACKAGES += \
     SonyPDX234SystemUIRes \
-    SonyPDX234NfcNciRes
+    SonyPDX234NfcNciRes \
+    SonyPDX234FrameworksRes
 
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
