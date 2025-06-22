@@ -57,6 +57,9 @@ PRODUCT_SOONG_NAMESPACES += \
 # Xperia Extras
 $(call inherit-product, vendor/sony/extra/Yodo/extra.mk)
 
+# New Xperia Extras repo
+$(call inherit-product, vendor/sony/extras/extras-vendor.mk)
+
 TARGET_SHIPS_SONY_FRAMEWORK := true
 TARGET_SHIPS_SONY_CAMERA := true
 TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
