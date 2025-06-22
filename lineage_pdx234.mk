@@ -31,8 +31,8 @@ PRODUCT_BUILD_PROP_OVERRIDES := \
     DeviceProduct=XQ-DQ72 \
     SystemDevice=XQ-DQ72 \
     SystemName=XQ-DQ72 \
-    BuildFingerprint=Sony/XQ-DQ72/XQ-DQ72:15/67.2.A.3.16/067002A003001600521143226:user/release-keys \
-    BuildDesc="XQ-DQ72-user 15 67.2.A.3.16 067002A003001600521143226 release-keys"
+    BuildFingerprint=Sony/XQ-DQ72/XQ-DQ72:15/67.2.A.3.55/067002A003005500521143226:user/release-keys \
+    BuildDesc="XQ-DQ72-user 15 67.2.A.3.55 067002A003005500521143226 release-keys"
 
 PRODUCT_NAME := lineage_pdx234
 PRODUCT_DEVICE := pdx234
