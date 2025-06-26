@@ -57,20 +57,5 @@ PRODUCT_SOONG_NAMESPACES += \
 # Xperia Extras
 $(call inherit-product, device/sony/extras/extra.mk)
 
-TARGET_SHIPS_SONY_FRAMEWORK := true
-TARGET_SHIPS_SONY_CAMERA := true
-TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
-TARGET_SHIPS_SOUND_ENHANCEMENT := true
-
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-sony
-
-# Picked modules from XperiaLabs/hardware_sony
-# The right way to do this would be to include the entire repo, but it's unnecessary
-PRODUCT_PACKAGES += \
-    XperiaAudioAddon \
-    XperiaTSRA \
-    XperiaSettingsMenu # modified to launch Sony stock audio settings
-
 # Inherit from vendor blobs
 $(call inherit-product, vendor/sony/pdx234/pdx234-vendor.mk)
